@@ -1,19 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main(){
+int main(){
 
-int num1, res;
+//Escreva um programa que receba um número inteiro do usuário e diga se ele é par ou ímpar.
 
+
+int num1;
+
+printf("Digite um número para exibir se é par ou ímpar");
 scanf("%d", &num1);
 
 
-if (num1 > 0){
-    printf("O n�mero e impar");
+if (num1 % 2 == 0){
+    printf("O número e par");
 }
 else{
-    if (num1 )
+    printf("O número é impar");
 }
 
-system("pause");
+return 0;
 }

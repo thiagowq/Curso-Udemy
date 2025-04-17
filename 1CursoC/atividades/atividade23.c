@@ -1,19 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main(){
+int main(){
 
-int num1, res;
-
-scanf("%d", &num1);
+//Soma de número positivos 
 
 
-if (num1 > 0){
-    printf("O n�mero e impar");
+int num1, soma = 0;
+
+do {
+    printf("Digite um número (0 para sair):");
+    scanf("%d", &num1);
+
+    if (num1 > 0)
+    {
+        soma += num1;
+    }
+    
+} while (num1 != 0);
+{
+    printf("A soma dos numeros positivos é: %d\n", soma);
 }
-else{
-    if (num1 )
-}
 
-system("pause");
+return 0;
 }

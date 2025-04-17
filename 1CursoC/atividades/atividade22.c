@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void main(){
+int main(){
 
-int num1, res;
+    // Tabuada de um número
 
+int num1;
+
+printf("Digite um número inteiro para exibir a tabuada:");
 scanf("%d", &num1);
 
-
-if (num1 > 0){
-    printf("O n�mero e impar");
-}
-else{
-    if (num1 )
+for (int i = 1; i <= 10; i++)
+{
+    printf("%d x %d = %d\n", num1, i, num1 * i);
 }
 
-system("pause");
+return 0;
 }
