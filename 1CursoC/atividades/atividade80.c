@@ -7,7 +7,7 @@ void calc_esfera(float R, float *area, float *volume){
 
     if (R <= 0)
     {
-        printf("O raio deve ser um valor positivo \n 0 é o raio");
+        printf("O raio deve ser um valor positivo");
 
         return;
     }
@@ -22,16 +22,15 @@ int main(){
     float R;
     float area, volume;
 
-    printf("Digite o valor do raio: ");
     scanf("%f", &R);
 
     calc_esfera(R, &area, &volume);
 
     if (R > 0)
     {
-        printf("Raio: %0.2f\n", R);
-        printf("Area: %0.2f\n", area);
-        printf("Volume: %0.2f", volume);
+        printf("raio: %0.2f\n", R);
+        printf("area: %0.2f\n", area);
+        printf("volume: %0.2f", volume);
     }
 
 
