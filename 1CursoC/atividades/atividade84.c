@@ -14,8 +14,6 @@ int main(){
         printf("Digite 10 numeros:");
         scanf("%d", &i);
 
-        
-
     }
     
     printf("%d", i);
