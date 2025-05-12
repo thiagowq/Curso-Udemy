@@ -4,7 +4,7 @@
 int main(){
 
     int res;
-    unsigned long long soma = 1;
+    int soma = 1;
 
     printf("Digite um valor: ");
     scanf("%d", &res);
@@ -15,7 +15,7 @@ int main(){
     }
     
     
-    printf("%llu", soma);
+    printf("%d", soma);
 
     return 0;
 }
