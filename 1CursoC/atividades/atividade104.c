@@ -3,11 +3,10 @@
 
 int main(){
     //CRIA UM VETOR FLOAT COM 10 POSIÇÕES
-    int vet[5];
+
     int maior, menor;
     int soma = 0;
     float media;
-    int tam = 5;
     int cont = 0;
     int cont1 = 0;
     int cont2 = 0;
@@ -16,13 +15,7 @@ int main(){
     int B[] = {2, 4, 6, 8, 10};
     int C = A - B;
     
-    for (int i = 0; i < tam; ++i) {
 
-        printf("DIGITE 5 VALORS:");
-        scanf("%d", &vet[i]);
-    }
-
-    printf("%d",vet[1]);
 
     for (int i = 0; i < tam; ++i) {
 
