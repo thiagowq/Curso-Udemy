@@ -3,114 +3,134 @@
 #define NUM_ESTACOES 5
 #define NUM_DIAS 7
 
-
-void lertemperatura(int mat[NUM_ESTACOES][NUM_DIAS]){
-    for (int i = 0; i < NUM_ESTACOES; I++){
-        for (int j = 0; j < NUM_DIAS; j++){
-            scanf("%d", &mat[i][j]);
+void lerTemperatura(float mat[NUM_ESTACOES][NUM_DIAS]) {
+    for (int i = 0; i < NUM_ESTACOES; i++) {
+        for (int j = 0; j < NUM_DIAS; j++) {
+            scanf("%f", &mat[i][j]);
         }
-        
     }
-    
 }
 
-int ordena(float vet[], int tam){
-    for (int i = 0; i < tam - 1; i++){
-        for (int j = 0; j < tam - i; j++){
-            if (vet[j] > vet[j + 1]){
+void ordena(float vet[], int tam) {
+    for (int i = 0; i < tam - 1; i++) {
+        for (int j = 0; j < tam - i - 1; j++) {
+            if (vet[j] > vet[j + 1]) {
                 float aux = vet[j];
                 vet[j] = vet[j + 1];
                 vet[j + 1] = aux;
             }
-            
         }
-
-        
     }
-    return media;
-} 
-
-void mediana(int mat[NUM_ESTACOES][NUM_DIAS]){
-
-    int org = mat[i][j], org1 = mat[i][j], org2 = mat[i][j], org3 = mat[i][j];
-
-    for (int i = 0; i < NUM_ESTACOES; i++){
-        for (int j = 0; j < NUM_DIAS; j++){
-            if (mat[i][j] < org)
-            {
-                org++;
-            }else if (mat[i][j] > org)
-            {
-                /* code */
-            }
-            
-            
-        }
-        
-    }
-    
 }
 
-int maiorTemperatura(int mat[NUM_ESTACOES][NUM_DIAS]){
-
-    int maior = mat[i][j];
-
-    for (int i = 0; i < NUM_ESTACOES; i++){
-        for (int j = 0; j < NUM_DIAS; j++){
-            if (mat[i][j] > maior){
-                maior = mat[i][j];
-            }
-            
-        }
-        
+float media(float vet[], int tam) {
+    float soma = 0;
+    for (int i = 0; i < tam; i++) {
+        soma += vet[i];
     }
-    return maior;
+    return soma / tam;
 }
 
-int menorTemperatura(int mat[NUM_ESTACOES][NUM_DIAS]){
-
-    int menor = mat[i][j];
-
-    for (int i = 0; i < NUM_ESTACOES; i++){
-        for (int j = 0; j < NUM_DIAS; j++){
-            if (mat[i][j] < menor){
-                menor = mat[i][j];
-            }
-            
-        }
-        
-    }
-    return menor;
+float mediana(float vet[], int tam) {
+    ordena(vet, tam);
+    return vet[tam / 2];
 }
 
-int aplitudeTermica(int mat[NUM_ESTACOES][NUM_DIAS]){
-    int termica = 0;
-    int maior = mat[i][j];
-    int menor = mat[i][j];
-
-    for (int i = 0; i < 5; NUM_ESTACOES++){
-        for (int j = 0; i < 7; NUM_DIAS++){
-            if (mat[i][j] > maior){
-                maior = mat[i][j];
-            }else if (mat[i][j] < menor){
-                menor = met[i][j];
-                termica = maior - menor;
-            }
-            
-            
-        }
-        
+float maior(float vet[], int tam) {
+    float m = vet[0];
+    for (int i = 1; i < tam; i++) {
+        if (vet[i] > m)
+            m = vet[i];
     }
-    return termica;
+    return m;
 }
 
+float menor(float vet[], int tam) {
+    float m = vet[0];
+    for (int i = 1; i < tam; i++) {
+        if (vet[i] < m)
+            m = vet[i];
+    }
+    return m;
+}
 
-int main(){
+float amplitude(float vet[], int tam) {
+    return maior(vet, tam) - menor(vet, tam);
+}
 
+void preencherResumo(float temp[NUM_ESTACOES][NUM_DIAS], float resumo[NUM_ESTACOES][5]) {
+    for (int i = 0; i < NUM_ESTACOES; i++) {
+        float copia[NUM_DIAS];
+        for (int j = 0; j < NUM_DIAS; j++) {
+            copia[j] = temp[i][j];
+        }
 
+        resumo[i][0] = media(copia, NUM_DIAS);
+        resumo[i][1] = mediana(copia, NUM_DIAS);
+        resumo[i][2] = maior(copia, NUM_DIAS);
+        resumo[i][3] = menor(copia, NUM_DIAS);
+        resumo[i][4] = amplitude(copia, NUM_DIAS);
+    }
+}
 
-    int mat[5][7];
+int main() {
+    float temperaturas[NUM_ESTACOES][NUM_DIAS];
+    float resumo[NUM_ESTACOES][5];
+    int opcao;
 
+    lerTemperatura(temperaturas);
+    preencherResumo(temperaturas, resumo);
+
+    while (1) {
+        scanf("%d", &opcao);
+        if (opcao == 6) break;
+
+        switch (opcao) {
+            case 1:
+                for (int i = 0; i < NUM_ESTACOES; i++) {
+                    for (int j = 0; j < NUM_DIAS; j++) {
+                        printf("%0.2f\t", temperaturas[i][j]);
+                    }
+                    printf("\n");
+                }
+                break;
+
+            case 2:
+                for (int i = 0; i < NUM_ESTACOES; i++) {
+                    for (int j = 0; j < 5; j++) {
+                        printf("%0.2f\t", resumo[i][j]);
+                    }
+                    printf("\n");
+                }
+                break;
+
+            case 3: {
+                int estacao;
+                scanf("%d", &estacao);
+                for (int j = 0; j < 5; j++) {
+                    printf("%0.2f\t", resumo[estacao][j]);
+                }
+                printf("\n");
+                break;
+            }
+
+            case 4:
+                for (int i = 0; i < NUM_ESTACOES; i++) {
+                    printf("%d -- %0.2f\n", i, resumo[i][1]);
+                }
+                break;
+
+            case 5: {
+                int maiorEst = 0;
+                for (int i = 1; i < NUM_ESTACOES; i++) {
+                    if (resumo[i][4] > resumo[maiorEst][4])
+                        maiorEst = i;
+                }
+                printf("%d -- %0.2f\n", maiorEst, resumo[maiorEst][4]);
+                break;
+            }
+        }
+    }
 
     return 0;
 }
