@@ -45,7 +45,7 @@ int main(){
     printf("Nome: %s\n", aluno[indiceMaior].nome);
     printf("Matricula: %d\n", aluno[indiceMaior].numeroMatricula);
     printf("Notas: %.2f, %.2f, %.2f\n", aluno[indiceMaior].nota1, aluno[indiceMaior].nota2, aluno[indiceMaior].nota3);
-    printf("Media: %.2f\n", maiorMedia);
+    printf("Media: %.2f\n", maiorMedia):
 
     return 0;
 }
