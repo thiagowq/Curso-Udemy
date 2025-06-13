@@ -1,38 +1,60 @@
 #include <stdio.h>
+#include <string.h>
 
-struct registroPessoa{
-    char nome[20];
-    int dataNasc;
+struct data{
+    int dia, mes, ano;
 };
 
-typedef struct registroPessoa registroPessoa;
+struct pessoa{
+    char nome[20];
+    struct data nascimento;
+};
 
-int dataNascimento(Pessoa p1, Pessoa p2){
-    if (> Pessoa p2){
-        
-    }
+typedef struct pessoa pessoa;
 
+int maisVelho(struct data d1, struct data d2) {
+    if (d1.ano != d2.ano)
+        return d1.ano < d2.ano;
+    if (d1.mes != d2.mes)
+        return d1.mes < d2.mes;
+    return d1.dia < d2.dia;
+}
+
+int maisNovo(struct data d1, struct data d2) {
+    if (d1.ano != d2.ano)
+        return d1.ano > d2.ano;
+    if (d1.mes != d2.mes)
+        return d1.mes > d2.mes;
+    return d1.dia > d2.dia;
 }
 
 int main(){
 
-    registroPessoa Pessoa[6];
+    pessoa pessoas[6];
 
-    int dataMaior;
+    int indiceMaisVelho = 0, indiceMaisNovo = 0;
 
     for (int i = 0; i < 6; i++){
-        printf("Digite seu nome:\n");
-        scanf(" %[^20]", Pessoa[i].nome);
+        printf("Digite o nome da pessoa %d: ", i + 1);
+        scanf(" %[^\n]", pessoas[i].nome);
 
-        printf("Digite a sua data de nascimento:\n");
-        scanf("%d %d %d", &Pessoa[i].dataNasc);
+        printf("Digite a sua data de nascimento (dd mm aa): ");
+        scanf("%d %d %d", &pessoas[i].nascimento.dia, &pessoas[i].nascimento.mes, &pessoas[i].nascimento.ano);
 
-        if (){
-            
-        }
-        
+        if (i == 0){
+            indiceMaisVelho = indiceMaisNovo = 0;
+        }else{
+            if (maisVelho(pessoas[i].nascimento, pessoas[indiceMaisVelho].nascimento)){
+                indiceMaisVelho = i;
+            }
+            if (maisNovo(pessoas[i].nascimento, pessoas[indiceMaisNovo].nascimento)){
+                indiceMaisNovo = i;
+            }            
     }
-    
+}
+
+    printf("\nPESSOA MAIS VELHA: %s\n", pessoas[indiceMaisVelho].nome);
+    printf("PESSOA MAIS NOVA: %s\n", pessoas[indiceMaisNovo].nome);
 
     return 0;
 }
